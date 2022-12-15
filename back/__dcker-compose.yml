@@ -1,0 +1,73 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+#  local:
+#    driver: 'host'
+services:
+  mysql:
+    # We'll use the MySQL 5.7 image as our base image. Less likely to spring unexpected surprises.
+    image: mysql:5.7
+    restart: always
+    container_name: mysql
+    healthcheck:
+      test: [ "CMD", "curl", "-fk", "tcp://localhost:3306" ]
+      interval: 300s
+      timeout: 400s
+      retries: 10
+    ports:
+      - ${MYSQL_PORT}:${MYSQL_PORT}
+#    command: --innodb_use_native_aio=0 --socket=/tmp/mysql.sock --bind_address=0.0.0.0
+    expose:
+      - ${MYSQL_PORT}
+#    networks:
+#      - app-network
+    # It is best to bind sockets on Windows.
+    # command: --innodb_use_native_aio=0 --socket=/tmp/mysql.sock --bind_address=0.0.0.0
+    command: --default-authentication-plugin=mysql_native_password
+    # We'd like to be able to access our data files on our local filesystem
+    volumes:
+      - mysql_volume:/var/lib/mysql
+    # It is recommended to not do this in production as it is wildly insecure
+    environment:
+      # So you don't have to use root, but you can if you like
+      # You can use whatever password you like
+      MYSQL_PORT: '3306'
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_DATABASE: 'beetroot_homework_austris'
+      # Password for root access
+  back:
+    container_name: back
+    restart: always
+#    networks:
+#      - local
+    depends_on:
+      - mysql
+    build:
+      context: .
+      target: dependencies
+    ports:
+#      - ${PORT}:${PORT}
+      - ${PORT}:${PORT}
+      - 9229:9229
+#    command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"'
+    networks:
+      - app-network
+    environment:
+      PORT: '3333'
+      APP_KEY: 'P8A764B5R4DiKi99wthMfLYVy6F1iDe-'
+      HOST: 'localhost'
+      DB_CONNECTION: 'mysql'
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: ''
+      MYSQL_DATABASE: 'beetroot_homework_austris'
+    volumes:
+      - ./:/home/node/app
+      # Uncomment the below line if you developing on MacOS
+      #- /home/node/app/node_modules
+    command: dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"
+volumes:
+  mysql_volume:

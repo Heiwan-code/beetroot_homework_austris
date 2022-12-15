@@ -1,0 +1,49 @@
+openapi: 3.0.3
+servers:
+  - url: http://localhost:3333
+    description: Defeault dev server
+info:
+  title: Beetroot backend homework
+  description: Beetroot homework submission from Austris aka Heiwan
+  version: v1
+tags:
+  - name: Items
+paths:
+  /items:
+    get:
+      tags:
+        - Items
+      summary: Get all items
+      description: Get all items
+      operationId: getItems
+components:
+  schemas:
+    GeneralError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+    responses:
+      NotFound:
+        description: Entity not found.
+      IllegalInput:
+        description: Illegal input for operation.
+      GeneralError:
+        description: General Error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralError'

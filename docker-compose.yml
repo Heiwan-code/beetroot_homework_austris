@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_DB: 'beetroot_homework_austris'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+  back:
+    container_name: back
+    restart: always
+    environment:
+      PORT: 3306
+      APP_KEY: 'P8A764B5R4DiKi99wthMfLYVy6F1iDe-'
+      SERVE_TO: 'localhost'
+      HOST: 'back'
+      DB_CONNECTION: 'pg'
+      DB_HOST: 'postgres'
+      PG_HOST: 'postgres'
+      DB_PORT: 5432
+      DB_USER: 'postgres'
+      DB_PASSWORD: 'postgres'
+      DB_NAME: 'beetroot_homework_austris'
+    depends_on:
+      - postgres
+    build:
+      context: ./back
+      target: dependencies
+    volumes:
+      - ./:/home/node/app/back
+    ports:
+      - 3306:3306
+      - 9229:9229
+    command: dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"
+  front:
+    container_name: front
+    restart: always
+    depends_on:
+      - back
+    build:
+      context: ./front
+    environment:
+      REACT_APP_API_DOMAIN: 'http://localhost:3306'
+      PORT: 3001
+    ports:
+      - 3001:3001
+volumes:
+  data:
