@@ -22,12 +22,12 @@ const RarityOne = ({onDelete, rarityData}: Props) => {
     }
     return (
         <Card
-            className='rarity-one list-one'
+            className='list-item list-item--rarity list-item--row'
             variant="outlined">
-            <FormButton onClick={deleteRarity} label='delete'/>
-            <div className='rarity-one__info'>
-                <h3 className="text--large rarity-one__name" style={style}>{name}</h3>
-                <p className='text--small'>{description}</p>
+            <FormButton className="btn--delete" onClick={deleteRarity} label='delete'/>
+            <div className='info'>
+                <h3 className="info__title text--large" style={style}>{name}</h3>
+                <p className='info__description text--small'>{description}</p>
             </div>
         </Card>
     )

@@ -38,12 +38,12 @@ const AddItem = ({onAdd}: Props) => {
     )
 
     const fetchItemTypes = async() => {
-        const { data, status } = await ItemTypesService.getAll()
+        const { data } = await ItemTypesService.getAll()
         setItemTypes(data)
     }
 
     const fetchRarities = async() => {
-        const { data, status } = await RaritiesService.getAll()
+        const { data } = await RaritiesService.getAll()
         setRarities(data)
     }
 
@@ -121,7 +121,7 @@ const AddItem = ({onAdd}: Props) => {
             published: published,
             onReset: reset
         }}>
-            <h2 className='text--spacious'>Add Item</h2>
+            <h2 className='add-one-form__title text--spacious'>Add Item</h2>
             <TextInputField {...{
                 error: caughtErrors.name,
                 label: 'name',

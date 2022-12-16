@@ -5,7 +5,6 @@ import TextInputField from '../../General/Form/TextInputField'
 import ImageInputField from '../../General/Form/ImageInputField'
 import FormButton from '../../General/Form/FormButton'
 import AddOneForm from '../Base/AddOneForm'
-import {Checkbox, TextField} from '@mui/material'
 import ErrorsType from '../../../types/errors.type'
 import NumberInputField from "../../General/Form/NumberInputField";
 import CheckboxInputField from "../../General/Form/CheckboxInputField";
@@ -99,7 +98,7 @@ const AddItemType = ({onAdd}: Props) => {
             published: published,
             onReset: reset
         }}>
-            <h2 className='text--spacious'>Add Item Type</h2>
+            <h2 className='add-one-form__title text--spacious'>Add Item Type</h2>
             <TextInputField {...{
                 error: caughtErrors.name,
                 label: 'name',

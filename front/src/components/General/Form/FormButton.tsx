@@ -1,13 +1,14 @@
 import React from 'react'
 
 type Props = {
+    className?: string,
     label: string
     onClick: () => void
 }
 
-const FormButton = ({label, onClick}: Props) => {
+const FormButton = ({className, label, onClick}: Props) => {
     return (
-        <button onClick={onClick} className="btn btn-success">
+        <button onClick={onClick} className={`btn btn-success ${className}`}>
             {label}
         </button>
     )

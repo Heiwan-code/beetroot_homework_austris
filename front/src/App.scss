@@ -1,4 +1,13 @@
-.App {
-    text-align: center;
-}
-@import 'style/no-time-for-design-sorry';
+@import "style/variables/color";
+@import 'style/overwrite/defaults';
+@import 'style/overwrite/drag-n-drop';
+@import 'style/overwrite/mui';
+@import 'style/overwrite/react-color';
+
+@import 'style/general/page';
+@import 'style/general/nav';
+@import 'style/general/search';
+@import 'style/general/form/add-one';
+
+@import 'style/api/base/list';
+@import 'style/api/base/list-item';

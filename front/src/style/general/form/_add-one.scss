@@ -1,0 +1,48 @@
+.add-one-form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  padding-bottom: 2rem;
+  background-color: $body-dark;
+  transition: transform 0.55s ease;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  .form-group {
+    label {
+      color: $font-light;
+    }
+  }
+  &__title {
+    color: $font-light;
+  }
+  .drag-n-drop {
+    p {
+      color: $font-light;
+    }
+  }
+  > * {
+    margin-bottom: 1rem !important;
+    max-width: 50rem;
+    width: 100%;
+    flex: 0 0 100%;
+    min-width: 300px;
+    > .MuiFormControl-root {
+      width: 100%;
+    }
+  }
+
+  .minimize-btn {
+    transition: traslate 0.89s ease;
+  }
+  &.is-minimized {
+    transform: translateY(calc(100% - 32px));
+    .minimize-btn {
+      transform: rotateZ(180deg);
+    }
+  }
+}

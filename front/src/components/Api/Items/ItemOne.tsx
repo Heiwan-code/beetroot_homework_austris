@@ -27,21 +27,23 @@ const ItemOne = ({onDelete, itemData}: Props) => {
     }
     return (
         <Card
-            className='img-card item-one list-one'
+            className='list-item list-item--item list-item--card'
             variant="outlined"
             style={styleCard}>
-            <FormButton onClick={deleteItem} label='delete'/>
+            <FormButton className="btn--delete" onClick={deleteItem} label='delete'/>
+            <h3 className="entry-title text--large" style={styleName}>{name}</h3>
             {image_url && (
-                <div className='img-card__img'>
+                <div className='img-wrapper'>
                     <img src={image_url} alt=""/>
                 </div>
             )}
-            <div className='img-card__info'>
-                <h3 className="text--large" style={styleName}>{name}</h3>
+            <div className='info'>
                 {item_type && (
-                    <p className='text--small'>{item_type.name}</p>
+                    <p className='info__property list-item--item__type text--small'>
+                        Type: <span className='value'>{item_type.name}</span>
+                    </p>
                 )}
-                <p className='text--small'>{description}</p>
+                <p className='info__description text--small'>{description}</p>
             </div>
 
         </Card>

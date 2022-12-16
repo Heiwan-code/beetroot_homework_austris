@@ -1,0 +1,43 @@
+.MuiPaper-root {
+  background-color: transparent !important;
+}
+
+.MuiBox-root {
+  backgroundColor: $body-light;
+  borderRadius: 2rem;
+  boxShadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 1rem;
+  &:hover, &.dragover {
+    opacity: 0.6;
+  }
+}
+.MuiFormControl-root {
+  * {
+    color: $font-light !important;
+    &.Mui-focused {
+      color: $primary-accent !important;
+      .MuiOutlinedInput-notchedOutline {
+        border-color: $primary-accent !important;
+      }
+      &:after {
+        border-color: $primary-accent !important;
+      }
+    }
+  }
+
+}
+
+.MuiCheckbox-root {
+  &:hover {
+    background-color: rgba($primary-accent, 0.16) !important;
+  }
+  &.Mui-checked {
+    color: rgba($primary-accent, 1) !important;
+  }
+}
+.MuiMenu-paper {
+  background-color: $body-dark !important;
+  * {
+    color: $font-light !important;
+  }
+}

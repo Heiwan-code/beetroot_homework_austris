@@ -9,7 +9,7 @@ type Props = {
 
 const ListRarities = ({rarities, onDelete}: Props) => {
     return (
-        <div className='list rarities-list'>
+        <div className='list list--rarities list--rows'>
             {
                 rarities.map((rarity: IRarity, index) => {
                     rarity.id && (index = rarity.id)

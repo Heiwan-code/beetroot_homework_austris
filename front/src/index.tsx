@@ -29,11 +29,11 @@ const BaseLayout = () => (
 
 const router = createHashRouter([
     {
-        path: '/',
-        element: <Navigate to='/items'/>
+        path: '',
+        element: <Navigate to='items'/>
     },
     {
-        path: '/',
+        path: '',
         element: <BaseLayout />,
         children: [
             {
@@ -41,11 +41,11 @@ const router = createHashRouter([
                 element: <PageItems/>
             },
             {
-                path: "/item-types",
+                path: "item-types",
                 element: <PageItemTypes/>,
             },
             {
-                path: "/rarities",
+                path: "rarities",
                 element: <PageRarities/>,
             },
         ]

@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+  color: $body-dark;
+}
+body {
+  min-height: 100vh;
+  background-color: $body-light;
+}
+button, a {
+  border: unset;
+  background-color: $primary-accent;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  color: $font-light;
+  transition: color 0.55s ease, background-color 0.55s ease;
+  &:hover {
+    cursor: pointer;
+    color: $font-light;
+    background-color: $primary-accent--highlight;
+  }
+}
+
+a {
+  text-decoration: unset;
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}

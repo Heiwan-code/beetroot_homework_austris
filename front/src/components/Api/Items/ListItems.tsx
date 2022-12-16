@@ -9,7 +9,7 @@ type Props = {
 const ListItems = ({items, onDelete}: Props) => {
     console.log(items)
     return (
-        <div className='list items-list'>
+        <div className='list list--items list--cards'>
             {
                 items.map((item: IItem, index) => {
                     item.id && (index = item.id)

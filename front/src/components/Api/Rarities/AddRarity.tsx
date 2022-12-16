@@ -6,7 +6,6 @@ import TextInputField from '../../General/Form/TextInputField'
 import FormButton from '../../General/Form/FormButton'
 import AddOneForm from '../Base/AddOneForm'
 import ErrorsType from '../../../types/errors.type'
-import {TextField} from '@mui/material'
 
 type Props = {
     onAdd: () => void
@@ -81,7 +80,7 @@ const AddRarity = ({onAdd}: Props) => {
             published: published,
             onReset: reset
         }}>
-            <h2 className='text--spacious'>Add Rarity</h2>
+            <h2 className='add-one-form__title text--spacious'>Add Rarity</h2>
             <TextInputField {...{
                 error: caughtErrors.name,
                 label: 'name',

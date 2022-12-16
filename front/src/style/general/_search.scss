@@ -1,0 +1,13 @@
+.search-bar {
+  position: fixed;
+  z-index: 888;
+  top: 0px;
+  left: 50%;
+  width: 30vw;
+  min-width: 330px;
+  transform: translateX(-50%);
+  background-color: rgba($body-dark, 0.6);
+  .MuiFormControl-root {
+    width: 100%;
+  }
+}

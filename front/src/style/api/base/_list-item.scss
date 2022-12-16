@@ -1,0 +1,69 @@
+.list-item {
+  display: flex;
+  position: relative;
+  &--card {
+    max-width: 14rem;
+    flex: 0 0 14rem;
+    flex-direction: column;
+    height: 24rem;
+    min-height: 24rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    .entry-title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .btn--delete {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+    }
+    .img-wrapper {
+      width: 100%;
+      height: 12.4rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .info {
+      flex-grow: 1;
+      min-height: 0;
+      &__property {
+        border-bottom: 1px solid $body-dark;
+        padding: 0.5rem 0;
+        font-weight: bold;
+        .value {
+          color: $primary-accent;
+        }
+      }
+      &__description {
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        max-width: 100%;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+  &--row {
+    min-height: 4rem;
+    .info {
+      width: 100%;
+      &__title {
+
+      }
+      &__description {
+        padding-right: 9rem;
+        padding-left: 9rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

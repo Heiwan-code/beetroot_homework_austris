@@ -8,7 +8,7 @@ type Props = {
 }
 const ListItemTypes = ({itemTypes, onDelete}: Props) => {
     return (
-        <div className='list item-types-list'>
+        <div className='list list--item-types list--cards'>
             {
                 itemTypes.map((itemType: IItemType, index) => {
                     itemType.id && (index = itemType.id)

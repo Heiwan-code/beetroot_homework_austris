@@ -1,0 +1,19 @@
+.drag-n-drop {
+  .dropzone {
+    border: dashed 2px $primary-accent;
+    transition: border 0.5s ease;
+    padding: 2rem;
+    &:hover {
+      cursor: pointer;
+      border: dashed 2px $primary-accent--highlight;
+    }
+  }
+  &.error {
+    .dropzone {
+      border-color: $error;
+      &:hover {
+        border-color: $error;
+      }
+    }
+  }
+}
